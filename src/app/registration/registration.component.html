@@ -2,7 +2,7 @@
     <div fxFlex fxFlexOffset="20px" class="form-size">
         <h3>Register for a new Account</h3>
 
-        <form novalidate [formGroup]="registrationForm">
+        <form novalidate [formGroup]="registrationForm" #rform="ngForm" (ngSubmit)="onSubmit()">
             <p>
                 <mat-form-field class="half-width">
                     <input matInput formControlName="firstname" placeholder="First Name" type="text" required>

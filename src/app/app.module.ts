@@ -9,14 +9,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+import { baseURL } from './shared/baseurl';
+
 import 'hammerjs';
 
 import { RegistrationComponent } from './registration/registration.component';
+
+import { RegistrationService } from './services/registration.service';
+
 
 @NgModule({
   declarations: [
@@ -34,9 +42,13 @@ import { RegistrationComponent } from './registration/registration.component';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RegistrationService,
+    {provide: 'BaseURL', useValue: baseURL},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

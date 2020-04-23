@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Registration } from '../shared/registration';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { RegistrationService } from '../services/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -18,9 +19,10 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private reg: FormBuilder,
+    private registrationService: RegistrationService,
     private route: ActivatedRoute,
     private location: Location,
-  ) {
+    @Inject('BaseURL') public BaseURL) {
     this.createForm();
    }
 
@@ -78,6 +80,25 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     this.registration = this.registrationForm.value;
     console.log(this.registration);
-    this.registrationForm.reset();
+    this.registrationForm.reset({
+      firstname: '',
+      lastname: '',
+      username: '',
+      password: '',
+      email: ''
+    });
+    this.registrationFormDirective.resetForm();
+
+    this.registrationService.registerUser(this.registration)
+    .subscribe(
+      registration => {
+        this.registration = registration
+      }
+
+    );
+
   }
+
+  
+  
 }
