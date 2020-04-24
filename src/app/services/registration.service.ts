@@ -21,7 +21,7 @@ export class RegistrationService {
       })
     };
 
-    return this.http.post<Registration>(baseURL + 'register/', registration, httpOptions);
+    return this.http.post<Registration>(baseURL + 'users/', registration, httpOptions);
   }
   
 }

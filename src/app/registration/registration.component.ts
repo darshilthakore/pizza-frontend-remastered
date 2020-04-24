@@ -30,20 +30,20 @@ export class RegistrationComponent implements OnInit {
   }
 
   formErrors = {
-    'firstname': '',
-    'lastname': '',
+    'first_name': '',
+    'last_name': '',
     'username': '',
     'password': '',
     'email': ''
   };
 
   validationMessages = {
-    'firstname': {
+    'first_name': {
       'required': 'First Name is required.',
       'minlength': 'First Name must be at least 2 characters long.',
       'maxlength': 'First Name cannot be more than 25 characters long.'
     },
-    'lastname': {
+    'last_name': {
       'required': 'Last Name is required.',
       'minlength': 'Last Name must be at least 2 characters long.',
       'maxlength': 'Last Name cannot be more than 25 characters long.'
@@ -68,8 +68,8 @@ export class RegistrationComponent implements OnInit {
 
   createForm(): void {
     this.registrationForm = this.reg.group({
-      firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
-      lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       username: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       password: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       email: ['', [Validators.required, Validators.email]],
@@ -81,8 +81,8 @@ export class RegistrationComponent implements OnInit {
     this.registration = this.registrationForm.value;
     console.log(this.registration);
     this.registrationForm.reset({
-      firstname: '',
-      lastname: '',
+      first_name: '',
+      last_name: '',
       username: '',
       password: '',
       email: ''

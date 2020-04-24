@@ -5,12 +5,12 @@
         <form novalidate [formGroup]="registrationForm" #rform="ngForm" (ngSubmit)="onSubmit()">
             <p>
                 <mat-form-field class="half-width">
-                    <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
-                    <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
+                    <input matInput formControlName="first_name" placeholder="First Name" type="text" required>
+                    <mat-error *ngIf="formErrors.first_name">{{formErrors.first_name}}</mat-error>
                 </mat-form-field>
                 <mat-form-field class="half-width">
-                    <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
-                    <mat-error *ngIf="formErrors.lastname">{{formErrors.lastname}}</mat-error>
+                    <input matInput formControlName="last_name" placeholder="Last Name" type="text" required>
+                    <mat-error *ngIf="formErrors.last_name">{{formErrors.last_name}}</mat-error>
                 </mat-form-field>
             </p>
             <p>
