@@ -2,7 +2,7 @@
     <div fxFlex fxFlexOffset="20px" class="form-size">
         <h3>Register for a new Account</h3>
 
-        <form novalidate [formGroup]="registrationForm" #rform="ngForm" (ngSubmit)="onSubmit()">
+        <form novalidate [formGroup]="registrationForm" #rform="ngForm" (ngSubmit)="onRegister()">
             <p>
                 <mat-form-field class="half-width">
                     <input matInput formControlName="first_name" placeholder="First Name" type="text" required>
@@ -30,7 +30,7 @@
                 </mat-form-field>
             </p>
 
-            <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="registrationForm.invalid">Submit</button>
+            <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="registrationForm.invalid">Register</button>
         </form>
     </div>
 </div>

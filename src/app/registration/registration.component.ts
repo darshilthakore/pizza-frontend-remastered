@@ -74,10 +74,16 @@ export class RegistrationComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       email: ['', [Validators.required, Validators.email]],
     });
+    
+    this.registrationForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged();
+  
   }
 
 
-  onSubmit() {
+  onRegister() {
     this.registration = this.registrationForm.value;
     console.log(this.registration);
     this.registrationForm.reset({
@@ -97,6 +103,26 @@ export class RegistrationComponent implements OnInit {
 
     );
 
+  }
+
+  onValueChanged(data?: any) {
+    if (!this.registrationForm) { return; }
+    const form = this.registrationForm;
+    for (const field in this.formErrors) {
+      if (this.formErrors.hasOwnProperty(field)) {
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            if (control.errors.hasOwnProperty(key)) {
+              this.formErrors[field] += messages[key] + ' ';
+            }
+          }
+        }
+      }
+    }
   }
 
   

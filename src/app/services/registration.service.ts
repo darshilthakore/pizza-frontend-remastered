@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Registration } from '../shared/registration';
+import { Login } from '../shared/login';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -21,7 +22,12 @@ export class RegistrationService {
       })
     };
 
-    return this.http.post<Registration>(baseURL + 'users/', registration, httpOptions);
+    return this.http.post<Registration>(baseURL + 'api/users/', registration, httpOptions);
+  }
+
+
+  loginUser(login: Login): Observable<Login> {
+    return this.http.post<Login>(baseURL + 'auth/', login);
   }
   
 }
