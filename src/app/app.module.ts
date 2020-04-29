@@ -10,6 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 
 
@@ -24,12 +27,14 @@ import 'hammerjs';
 import { RegistrationComponent } from './registration/registration.component';
 
 import { RegistrationService } from './services/registration.service';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,9 @@ import { RegistrationService } from './services/registration.service';
     MatInputModule,
     FormsModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatGridListModule
   ],
   providers: [
     RegistrationService,
