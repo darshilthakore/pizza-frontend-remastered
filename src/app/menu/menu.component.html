@@ -1,0 +1,16 @@
+<mat-toolbar color="primary"> <span>Pinochhio's Pizza</span>
+    <span class="flex-spacer"></span>
+    <button mat-raised-button (click)="logoutClicked()" id="logoutBtn" color="primary">LogOut</button>
+</mat-toolbar>
+
+
+<mat-list>
+    <mat-list-item *ngFor="let item of items">
+        <h3 matLine>{{item.name}}</h3>
+        <p matline>{{item.category}}</p>
+        
+    </mat-list-item>
+
+</mat-list>
+
+

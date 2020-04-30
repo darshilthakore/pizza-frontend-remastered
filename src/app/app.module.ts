@@ -28,13 +28,19 @@ import { RegistrationComponent } from './registration/registration.component';
 
 import { RegistrationService } from './services/registration.service';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { MenuComponent } from './menu/menu.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent,
+    MenuComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

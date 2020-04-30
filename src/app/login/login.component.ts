@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Params, ActivatedRoute } from '@angular/router';
+import { Params, ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Login } from '../shared/login';
 import { RegistrationService } from '../services/registration.service';
@@ -22,13 +22,16 @@ export class LoginComponent implements OnInit {
     private loginService: RegistrationService,
     private route: ActivatedRoute,
     private location: Location,
+    private router: Router,
     @Inject('BaseURL')public BaseURL) {
       this.createForm();
      }
 
   ngOnInit(): void {
-    if ( localStorage.getItem('token') && localStorage.getItem('account')) {
-      
+    if ( localStorage.getItem('token') && localStorage.getItem('username')) {
+      console.log('im in ngOnIniyt condition');
+      // this.global.me = JSON.parse(localStorage.getItem('user'));
+      this.router.navigate(['/home']);
     }
   }
 
@@ -79,6 +82,8 @@ export class LoginComponent implements OnInit {
       response => {
         console.log(response);
         localStorage.setItem('token', response['token']);
+        localStorage.setItem('user', response['username']);
+        this.router.navigate(['/home'])
       },
       error => {
         console.log('error', error);
