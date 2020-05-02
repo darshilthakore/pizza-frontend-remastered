@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MenuService } from '../services/menu.service';
 import { Item } from '../shared/item';
-
+import { Category } from '../shared/category';
+import { Topping } from '../shared/topping';
 
 @Component({
   selector: 'app-menu',
@@ -13,11 +14,15 @@ import { Item } from '../shared/item';
 export class MenuComponent implements OnInit {
 
   items: Item[];
-
+  categories: Category[];
+  toppings: Topping[];
+  selectedValue: number;
+  
   constructor(
     private router: Router,
     private menuService: MenuService,
     @Inject('BaseURL')public BaseURL) { }
+    
 
   ngOnInit(): void {
 
@@ -25,12 +30,23 @@ export class MenuComponent implements OnInit {
       //this.global.me = JSON.parse(localStorage.getItem('user'));
       console.log("im in if cond on home.comp.ts")
       this.getItems();
+      this.getCategories();
+      this.getToppings();
     } else {
       console.log("im in else cond on home.comp.ts")
 
       this.router.navigate(['/user']);
     }
 
+  }
+
+  getCategories() {
+    this.menuService.getCategories().subscribe(
+      response => {
+        console.log(response);
+        this.categories = response;
+      }
+    );
   }
 
   getItems() {
@@ -41,6 +57,21 @@ export class MenuComponent implements OnInit {
       }
     );
   }
+
+  getToppings() {
+    this.menuService.getToppings().subscribe(
+      response => {
+        console.log(response);
+        this.toppings = response;
+      }
+    );
+
+  }
+
+  // updatePrice(args) {
+  //   console.log("inside updatePrice");
+  //   console.log(args);
+  // }
 
   logoutClicked() {
     // this.global.me = new User();

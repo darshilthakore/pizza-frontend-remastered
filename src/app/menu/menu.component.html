@@ -4,13 +4,38 @@
 </mat-toolbar>
 
 
-<mat-list>
-    <mat-list-item *ngFor="let item of items">
-        <h3 matLine>{{item.name}}</h3>
-        <p matline>{{item.category}}</p>
+<div class="container"
+    fxLayout="column"
+    fxLayoutGap="10px">
+    <div fxFlex *ngFor="let category of categories">
+        <h3>{{category.name}}</h3>
+            <div *ngFor="let item of items">
+                <mat-card *ngIf="item.category == category.name" class="itemcard">
         
-    </mat-list-item>
+                    <mat-card-header>
 
-</mat-list>
+                        <mat-card-title>{{item.name}}</mat-card-title>
+                        <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
+                        <span class="flex-spacer"></span>
+                        <div>$ {{item.price_large}}</div>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-form-field>
+                            <mat-label>Extra Toppings</mat-label>
+                            <mat-select multiple>
+                                <mat-option *ngFor="let topping of toppings" [value]="topping.rate">{{topping.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-card-content>
+                    <span class="flex-spacer"></span>
+                    
+                    <button mat-button color="primary"><i class="fa fa-plus-circle"></i> Add to Cart</button>
+                </mat-card>
+                
+            </div>
+    </div>
+</div>
+
+
 
 

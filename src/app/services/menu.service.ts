@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../shared/item';
+import { Category } from '../shared/category';
+import { Topping } from '../shared/topping';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -26,4 +28,14 @@ export class MenuService {
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(baseURL + 'api/items', this.getAuthHeaders());
   }
+
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(baseURL + 'api/categories', this.getAuthHeaders());
+  }
+
+  getToppings(): Observable<Topping[]> {
+    return this.http.get<Topping[]>(baseURL + 'api/toppings', this.getAuthHeaders());
+  }
+  
+
 }

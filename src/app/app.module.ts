@@ -12,8 +12,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
-
-
+import { MatCardModule } from '@angular/material/card'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {MatSelectModule} from '@angular/material/select'; 
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,7 +57,10 @@ import { CartComponent } from './cart/cart.component';
     MatCheckboxModule,
     HttpClientModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [
     RegistrationService,
