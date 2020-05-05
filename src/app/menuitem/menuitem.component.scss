@@ -1,9 +1,18 @@
 .itemcard {
-    max-width: 40%;
-
+    max-width: 80%;
+    min-height: min-content;
 }
 
 .fa-plus-circle:hover {
     color: green;
     size: 7px;
+}
+
+mat-grid-tile {
+    width: 100px;
+    height: 50px;
+}
+
+mat-card-content {
+    max-height: fit-content;
 }

@@ -15,6 +15,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatSelectModule} from '@angular/material/select'; 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatSidenavModule} from '@angular/material/sidenav'; 
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -62,7 +65,10 @@ import { MenuitemComponent } from './menuitem/menuitem.component';
     MatGridListModule,
     MatCardModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatSidenavModule
   ],
   providers: [
     RegistrationService,

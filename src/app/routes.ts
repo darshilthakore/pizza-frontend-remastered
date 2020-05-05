@@ -7,13 +7,14 @@ import { MenuComponent } from './menu/menu.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full'},
-    { path: 'user', component: UserComponent, children: [
-        {
-            path: '', component: RegistrationComponent, outlet:'right'
-        },
-        {
-            path: '', component: LoginComponent, outlet:'left'
-        },
-    ]},
+    { path: 'user', component: UserComponent},
+    // { path: 'user', component: UserComponent, children: [
+    //     {
+    //         path: '', component: RegistrationComponent, outlet:'right'
+    //     },
+    //     {
+    //         path: '', component: LoginComponent, outlet:'left'
+    //     },
+    // ]},
     { path: 'home', component: MenuComponent},
 ];

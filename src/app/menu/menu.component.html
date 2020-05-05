@@ -2,6 +2,9 @@
     <span class="flex-spacer"></span>
     <button mat-raised-button (click)="logoutClicked()" id="logoutBtn" color="primary">LogOut</button>
 </mat-toolbar>
+<div class="cart">
+    <app-cart></app-cart>
+</div>
 
 <div class="container"
     fxLayout="column"
@@ -10,6 +13,9 @@
         <h3>{{category.name}}</h3>
         <div *ngFor="let item of items">
             <app-menuitem [item]="item" [category]="category" [toppings]="toppings"></app-menuitem>
+        </div>
+        <div [hidden]="items">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
     </div>
 </div>

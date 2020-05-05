@@ -12,19 +12,19 @@
                     <mat-label>Meal Size</mat-label>
                     <mat-select (selectionChange)="onSizeSelect($event)" [(ngModel)]="selected">
                         <mat-option [value]="item.price_small">Small</mat-option>
-                        <mat-option [value]="item.price_large">Large</mat-option>
+                        <mat-option *ngIf="item.price_large != 0" [value]="item.price_large">Large</mat-option>
                     </mat-select>
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Extra Toppings</mat-label>
-                    <mat-select (selectionChange)="onToppingSelect($event)" multiple>
-                        <mat-option *ngFor="let topping of toppings" [value]="topping.rate">{{topping.name}}</mat-option>
+                    <mat-select (selectionChange)="onToppingSelect($event)" [(ngModel)]="selectedToppings" multiple>
+                        <mat-option *ngFor="let topping of toppings" [value]="topping">{{topping.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </mat-grid-tile>
         </mat-grid-list>
     </mat-card-content>
-    <button mat-button color="primary"><i class="fa fa-plus-circle"></i> Add to Cart</button>
+    <button (click)="addToCart()" mat-button color="primary"><i class="fa fa-plus-circle"></i> Add to Cart</button>
 </mat-card>
