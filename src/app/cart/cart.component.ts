@@ -20,11 +20,14 @@ export class CartComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.cartService.getItems() 
-      .subscribe(response => {
-        console.log("response:", response);
-        this.cartitems = response;
+    this.cartService.mysubject.subscribe((value) => {
+      console.log(value);
+      this.cartService.getItems().subscribe(response => {
+        console.log("Response in cart comp:", response);
       });
+    });
   }
+ 
+
 
 }
