@@ -77,6 +77,7 @@ export class MenuComponent implements OnInit {
     // this.global.me = new User();
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('usercart');
     this.router.navigate(['/user']);
   }
 }

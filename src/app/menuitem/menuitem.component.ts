@@ -70,7 +70,8 @@ export class MenuitemComponent implements OnInit {
     newCartItem.baseprice = this.chosenSizePrice;
     newCartItem.extraprice = this.chosenToppingPrice;
     newCartItem.toppings = this.selectedToppings;
-
+    newCartItem.total = newCartItem.baseprice + newCartItem.extraprice;
+    newCartItem.total *= newCartItem.quantity;
     // this.cartitems.push(newCartItem);
 
     this.cartService.addToCart(newCartItem);

@@ -98,9 +98,10 @@ export class RegistrationComponent implements OnInit {
     this.registrationService.registerUser(this.registration)
     .subscribe(
       registration => {
+        console.log(registration);
         this.registration = registration
       }
-
+      
     );
 
   }
