@@ -1,23 +1,25 @@
-<h2>Cart</h2>
-<div>{{cart.user}}</div>
-<mat-list dense>
-    <mat-list-item *ngFor="let cartitem of cartitems">
-        <h2 matLine>Item: {{cartitem.name}}</h2>
-        <p matLine>Base Price: ${{cartitem.baseprice}}</p>
-        <p matLine [hidden]="cartitem.toppings == []">Extra Toppings:
-            <mat-list matLine>
-                <mat-list-item matLine *ngFor="let topping of cartitem.toppings">
-                    <h4 matLine>{{topping.name}} : + ${{topping.rate}}</h4>
-                </mat-list-item>
-            </mat-list>
-        </p>
-        <button mat-mini-fab color="primary"><i class="fa fa-minus-circle"></i></button><div></div><button mat-mini-fab color="primary"><i class="fa fa-plus-circle"></i></button>
-    </mat-list-item>
+<ng-container *ngIf="cart">
+    <h2>Cart</h2>
+    <!-- <div>{{cart.user}}</div> -->
+    <mat-list dense>
+        <mat-list-item *ngFor="let cartitem of cart.cartitems">
+            <h2 matLine>Item: {{cartitem.name}}</h2>
+            <p matLine>Base Price: ${{cartitem.baseprice}}</p>
+            <p matLine [hidden]="cartitem.toppings == []">Extra Toppings:
+                <mat-list matLine>
+                    <mat-list-item matLine *ngFor="let topping of cartitem.toppings">
+                        <h4 matLine>{{topping.name}} : + ${{topping.rate}}</h4>
+                    </mat-list-item>
+                </mat-list>
+            </p>
+            <button mat-mini-fab color="primary"><i class="fa fa-minus-circle"></i></button><div></div><button mat-mini-fab color="primary"><i class="fa fa-plus-circle"></i></button>
+        </mat-list-item>
 
-</mat-list>
+    </mat-list>
 
-<!-- <div [hidden]="!cartitems"><h2>Subtotal: ${{cart.grand_total}}</h2></div> -->
+    <div [hidden]="!cart.cartitems"><h2>Subtotal: ${{cart.grand_total}}</h2></div>
 
-<!-- <div [hidden]="cartitems">
-    <p> Your Cart is Empty!</p>
-</div> -->
+    <div [hidden]="cart.cartitems">
+        <p> Your Cart is Empty!</p>
+    </div>
+</ng-container>

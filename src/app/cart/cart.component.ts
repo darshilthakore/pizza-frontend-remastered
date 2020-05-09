@@ -22,6 +22,16 @@ export class CartComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.cartService.getItems().subscribe( response => {
+      this.cart = {
+        cartitems: response['cartitems'],
+        id: response['id'],
+        grand_total : response['grand_total'],
+        user : response['user']
+    }
+    })
+
     this.updateCart();
 
   }
@@ -32,13 +42,12 @@ export class CartComponent implements OnInit {
       this.cartService.getItems().subscribe(response => {
         console.log("Response in cart comp:", response);
         
-        let cartContent = new Cart();
-        cartContent.cartitems = response['cartitems'];
-        cartContent.id = response['id'];
-        cartContent.grand_total = response['grand_total'];
-        cartContent.user = response['user'];
-
-        this.cart = cartContent;
+        this.cart = {
+          cartitems: response['cartitems'],
+          id: response['id'],
+          grand_total : response['grand_total'],
+          user : response['user']
+      }
 
         console.log("Cart is:", this.cart);
         // this.cart.cartitems = this.cartitems;
