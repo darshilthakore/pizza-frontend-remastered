@@ -4,7 +4,7 @@ export class CartItem {
     name: string;
     baseprice: number;
     toppings: Topping[];
-    extraprice: number
-    quantity: number;
+    extraprice: number;
+    quantity= 1;
     total: number;
 }

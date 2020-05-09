@@ -1,5 +1,5 @@
 <h2>Cart</h2>
-
+<div>{{cart.user}}</div>
 <mat-list dense>
     <mat-list-item *ngFor="let cartitem of cartitems">
         <h2 matLine>Item: {{cartitem.name}}</h2>
@@ -16,8 +16,8 @@
 
 </mat-list>
 
-<div [hidden]="!cartitems"><h2>Subtotal: ${{subtotal}}</h2></div>
+<!-- <div [hidden]="!cartitems"><h2>Subtotal: ${{cart.grand_total}}</h2></div> -->
 
-<div [hidden]="cartitems">
+<!-- <div [hidden]="cartitems">
     <p> Your Cart is Empty!</p>
-</div>
+</div> -->

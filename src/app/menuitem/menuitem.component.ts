@@ -74,7 +74,10 @@ export class MenuitemComponent implements OnInit {
     newCartItem.total *= newCartItem.quantity;
     // this.cartitems.push(newCartItem);
 
-    this.cartService.addToCart(newCartItem);
+    this.cartService.addToCart(newCartItem)
+      .subscribe(response => {
+        console.log("response on add to cart", response);
+      });
     console.log("adding item to cart");
     // console.log(this.cartitems);
     this.cartService.getItems()

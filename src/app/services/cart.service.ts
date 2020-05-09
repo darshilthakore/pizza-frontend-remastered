@@ -13,6 +13,7 @@ import { Cart } from '../shared/cart';
 export class CartService {
 
   public mysubject = new Subject();
+  private id = localStorage.getItem('cartid');
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders() {
@@ -24,7 +25,7 @@ export class CartService {
     return { headers: httpHeaders};
   }
   
-  id = localStorage.getItem('usercart');
+
   // items: CartItem[] = [];
 
   // getItems(): Observable<CartItem[]> {
@@ -35,16 +36,17 @@ export class CartService {
   //   this.items.push(product);
   // }
 
-  createCart(cart: Cart): Observable<Cart> {
-    return this.http.post<Cart>(baseURL + 'api/carts/', cart, this.getAuthHeaders());
-  }
+  // createCart(cart: Cart): Observable<Cart> {
+  //   return this.http.post<Cart>(baseURL + 'api/carts/', cart, this.getAuthHeaders());
+  // }
 
   addToCart(cartitem: CartItem): Observable<CartItem> {
-    return this.http.post<CartItem>(baseURL + 'api/carts/' + this.id + '/cartitems/', cartitem, this.getAuthHeaders());
+    console.log("making put request");
+    return this.http.put<CartItem>(baseURL + 'api/carts/' + this.id + '/', cartitem, this.getAuthHeaders());
   }
 
   getItems(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(baseURL + 'api/carts/' + this.id + '/cartitems/', this.getAuthHeaders());
+    return this.http.get<CartItem[]>(baseURL + 'api/carts/' + this.id, this.getAuthHeaders());
   }
 
   // getItems(): Observable<CartItem[]> {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, Injector } from '@angular/core';
 import { CartItem } from '../shared/cartitem';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -11,30 +11,43 @@ import { Cart } from '../shared/cart';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
-  cart: Cart; 
-  cartitems: CartItem[];
-  subtotal = 0;
+  
+  cart: Cart;
+  // cartitems: CartItem[];
 
   constructor(
     private route: ActivatedRoute,
-    private cartService: CartService) { }
-
+    private cartService: CartService,
+    @Inject('BaseURL')public BaseURL) { }
 
 
   ngOnInit(): void {
+    this.updateCart();
 
+  }
+
+  updateCart() {
     this.cartService.mysubject.subscribe((value) => {
       console.log(value);
       this.cartService.getItems().subscribe(response => {
         console.log("Response in cart comp:", response);
-        this.cartitems = response;
+        
+        let cartContent = new Cart();
+        cartContent.cartitems = response['cartitems'];
+        cartContent.id = response['id'];
+        cartContent.grand_total = response['grand_total'];
+        cartContent.user = response['user'];
 
-        for ( var item of response) {
-          this.subtotal += item.total;
-        }
+        this.cart = cartContent;
 
-        console.log("Subtotal:", this.subtotal);
+        console.log("Cart is:", this.cart);
+        // this.cart.cartitems = this.cartitems;
+
+        // for ( var item of response) {
+        //   this.subtotal += item.total;
+        // }
+
+        // console.log("Subtotal:", this.subtotal);
 
       });
     });

@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
         console.log(response);
         localStorage.setItem('token', response['token']);
         localStorage.setItem('user', response['username']);
+        localStorage.setItem('cartid',response['cart']);
         this.router.navigate(['/home'])
       },
       error => {
