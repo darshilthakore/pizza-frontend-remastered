@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, Injector, Input } from '@angular/core';
 import { CartItem } from '../shared/cartitem';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -12,7 +12,7 @@ import { Cart } from '../shared/cart';
 })
 export class CartComponent implements OnInit {
   
-  cart: Cart;
+  @Input() cart;
   // cartitems: CartItem[];
 
   constructor(
@@ -23,14 +23,14 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cartService.getItems().subscribe( response => {
-      this.cart = {
-        cartitems: response['cartitems'],
-        id: response['id'],
-        grand_total : response['grand_total'],
-        user : response['user']
-    }
-    })
+    // this.cartService.getItems().subscribe( response => {
+    //   this.cart = {
+    //     cartitems: response['cartitems'],
+    //     id: response['id'],
+    //     grand_total : response['grand_total'],
+    //     user : response['user']
+    // }
+    // })
 
     this.updateCart();
 
@@ -59,13 +59,35 @@ export class CartComponent implements OnInit {
         // console.log("Subtotal:", this.subtotal);
 
       });
+
     });
+
+    this.cartService.mysubject.next('Data Changed');
   }
 
-  // increaseQuantity(cartitem) {
-  //   this.cartService.incrementItem(cartitem).subscribe 
-  // }
- 
+  decrementQuantity(cartitemid) {
+    console.log(cartitemid);
+    this.cartService.mysubject.subscribe((value) => {
+      console.log(value);
+      this.cartService.decrementItem(cartitemid)
+        .subscribe( response => {
+          console.log(response);
+        });
+    });
+    
+    this.cartService.mysubject.next('Data Changed');
 
+
+  }
+  
+  incrementQuantity(cartitemid) {
+    console.log(cartitemid);
+    this.cartService.incrementItem(cartitemid)
+      .subscribe( response => {
+        console.log(response);
+      })
+    this.cartService.mysubject.next('Data Changed');
+  
+  }
 
 }

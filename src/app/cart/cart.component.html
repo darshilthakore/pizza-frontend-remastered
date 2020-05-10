@@ -12,7 +12,10 @@
                     </mat-list-item>
                 </mat-list>
             </p>
-            <button mat-mini-fab color="primary"><i class="fa fa-minus-circle"></i></button><div></div><button mat-mini-fab color="primary"><i class="fa fa-plus-circle"></i></button>
+            <p matLine> Quantity: {{cartitem.quantity}}</p>
+            <p matLine>Extra Price: {{cartitem.extraprice}}</p>
+            <p matLine>Total : {{cartitem.total}}</p>
+            <button (click)="decrementQuantity(cartitem.id)" mat-mini-fab color="primary"><i class="fa fa-minus-circle"></i></button><div></div><button (click)="incrementQuantity(cartitem.id)" mat-mini-fab color="primary"><i class="fa fa-plus-circle"></i></button>
         </mat-list-item>
 
     </mat-list>

@@ -4,5 +4,5 @@ export class Cart {
     id: string;
     user: string;
     cartitems: CartItem[];
-    grand_total: number;
+    grand_total: 0;
 }

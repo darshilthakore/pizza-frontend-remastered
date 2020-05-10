@@ -53,4 +53,11 @@ export class CartService {
   //   return this.http.get<CartItem[]>(baseURL + 'api/cart/')
   // }
 
+  decrementItem(cartid) {
+    return this.http.put(baseURL + 'api/carts/' + this.id + '/deletequantity/', cartid, this.getAuthHeaders());
+  }
+
+  incrementItem(cartid) {
+    return this.http.put(baseURL + 'api/carts/' + this.id + '/addquantity/', cartid, this.getAuthHeaders());
+  }
 }

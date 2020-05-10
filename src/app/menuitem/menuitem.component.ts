@@ -71,7 +71,6 @@ export class MenuitemComponent implements OnInit {
     newCartItem.extraprice = this.chosenToppingPrice;
     newCartItem.toppings = this.selectedToppings;
     newCartItem.total = newCartItem.baseprice + newCartItem.extraprice;
-    newCartItem.total *= newCartItem.quantity;
     // this.cartitems.push(newCartItem);
 
     this.cartService.addToCart(newCartItem)
@@ -85,7 +84,7 @@ export class MenuitemComponent implements OnInit {
         console.log("Response in menuitem comp:",response);
       })
     
-      this.cartService.mysubject.next('Data Changed');
+    this.cartService.mysubject.next('Data Changed');
 
 
 

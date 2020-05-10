@@ -5,6 +5,8 @@ import { MenuService } from '../services/menu.service';
 import { Item } from '../shared/item';
 import { Category } from '../shared/category';
 import { Topping } from '../shared/topping';
+import { CartService } from '../services/cart.service';
+import { Cart } from '../shared/cart';
 
 @Component({
   selector: 'app-menu',
@@ -17,10 +19,12 @@ export class MenuComponent implements OnInit {
   categories: Category[];
   toppings: Topping[];
   selectedValue: number;
+  cart: Cart;
   
   constructor(
     private router: Router,
     private menuService: MenuService,
+    private cartService: CartService,
     @Inject('BaseURL')public BaseURL) { }
     
 
@@ -32,6 +36,7 @@ export class MenuComponent implements OnInit {
       this.getItems();
       this.getCategories();
       this.getToppings();
+      this.getCart();
     } else {
       console.log("im in else cond on home.comp.ts")
 
@@ -66,6 +71,17 @@ export class MenuComponent implements OnInit {
       }
     );
 
+  }
+
+  getCart() {
+    this.cartService.getItems().subscribe( response => {
+      this.cart = {
+        cartitems: response['cartitems'],
+        id: response['id'],
+        grand_total : response['grand_total'],
+        user : response['user']
+    }
+    })
   }
 
   // updatePrice(args) {

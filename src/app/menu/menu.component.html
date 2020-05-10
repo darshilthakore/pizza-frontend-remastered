@@ -3,7 +3,7 @@
     <button mat-raised-button (click)="logoutClicked()" id="logoutBtn" color="primary">LogOut</button>
 </mat-toolbar>
 <div class="cart">
-    <app-cart></app-cart>
+    <app-cart [cart]="cart"></app-cart>
 </div>
 
 <div class="container"
