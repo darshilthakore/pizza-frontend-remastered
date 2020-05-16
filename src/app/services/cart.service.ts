@@ -47,7 +47,8 @@ export class CartService {
   }
 
   getItems(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(baseURL + 'api/carts/' + this.id, this.getAuthHeaders());
+    console.log("Im using this cart id: ", localStorage.getItem('cartid'));
+    return this.http.get<CartItem[]>(baseURL + 'api/carts/' + localStorage.getItem('cartid'), this.getAuthHeaders());
   }
 
   // getItems(): Observable<CartItem[]> {

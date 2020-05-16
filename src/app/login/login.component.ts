@@ -80,10 +80,11 @@ export class LoginComponent implements OnInit {
     this.loginService.loginUser(this.login)
     .subscribe(
       response => {
-        console.log(response);
+        console.log("Logging response is:", response);
         localStorage.setItem('token', response['token']);
         localStorage.setItem('user', response['username']);
         localStorage.setItem('cartid',response['cart']);
+        console.log("setting the cart id as : ", response['cart']);
         this.router.navigate(['/home'])
       },
       error => {

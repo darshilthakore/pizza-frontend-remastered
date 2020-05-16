@@ -4,6 +4,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { MenuComponent } from './menu/menu.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,4 +18,5 @@ export const routes: Routes = [
     //     },
     // ]},
     { path: 'home', component: MenuComponent},
+    { path: 'checkout', component: CheckoutComponent},
 ];

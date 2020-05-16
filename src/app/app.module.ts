@@ -36,6 +36,7 @@ import { UserComponent } from './user/user.component';
 import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
 import { MenuitemComponent } from './menuitem/menuitem.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MenuitemComponent } from './menuitem/menuitem.component';
     UserComponent,
     MenuComponent,
     CartComponent,
-    MenuitemComponent
+    MenuitemComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -24,9 +24,13 @@
 
     </div>
 
-    <div [hidden]="cart.grand_total == 0"><h2>Subtotal: ${{cart.grand_total}}</h2></div>
+    <div [hidden]="cart.grand_total == 0">
+        <h2>Subtotal: ${{cart.grand_total}}</h2>
+        <button mat-button class="background-primary text-floral-white" routerLink="/checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i> CheckOut</button>
+    </div>
 
     <div [hidden]="cart.grand_total != 0">
         <p> Your Cart is Empty!</p>
+        <i class="fa fa-shopping-cart" style="size: 9ex; align-content: center;" aria-hidden="true"></i>
     </div>
 </ng-container>
