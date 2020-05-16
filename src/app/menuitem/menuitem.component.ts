@@ -76,6 +76,7 @@ export class MenuitemComponent implements OnInit {
     this.cartService.addToCart(newCartItem)
       .subscribe(response => {
         console.log("response on add to cart", response);
+        this.cartService.mysubject.next(response);
       });
     console.log("adding item to cart");
     // console.log(this.cartitems);
@@ -84,7 +85,7 @@ export class MenuitemComponent implements OnInit {
         console.log("Response in menuitem comp:",response);
       })
     
-    this.cartService.mysubject.next('Data Changed');
+    // this.cartService.mysubject.next('Data Changed');
 
 
 

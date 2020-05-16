@@ -32,11 +32,6 @@ export class CartComponent implements OnInit {
     // }
     // })
 
-    this.updateCart();
-
-  }
-
-  updateCart() {
     this.cartService.mysubject.subscribe((value) => {
       console.log(value);
       this.cartService.getItems().subscribe(response => {
@@ -62,20 +57,20 @@ export class CartComponent implements OnInit {
 
     });
 
-    this.cartService.mysubject.next('Data Changed');
+    // this.cartService.mysubject.next('Data Changed');
+
   }
+
 
   decrementQuantity(cartitemid) {
     console.log(cartitemid);
-    this.cartService.mysubject.subscribe((value) => {
-      console.log(value);
-      this.cartService.decrementItem(cartitemid)
-        .subscribe( response => {
-          console.log(response);
-        });
-    });
+    this.cartService.decrementItem(cartitemid)
+      .subscribe( response => {
+        console.log(response);
+        this.cartService.mysubject.next(response);
+      });
     
-    this.cartService.mysubject.next('Data Changed');
+    // this.cartService.mysubject.next('Data Changed');
 
 
   }
@@ -85,8 +80,10 @@ export class CartComponent implements OnInit {
     this.cartService.incrementItem(cartitemid)
       .subscribe( response => {
         console.log(response);
-      })
-    this.cartService.mysubject.next('Data Changed');
+        this.cartService.mysubject.next(response);
+      });
+   
+    // this.cartService.mysubject.next('Data Changed');
   
   }
 

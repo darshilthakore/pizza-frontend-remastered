@@ -13,6 +13,7 @@ import { Cart } from '../shared/cart';
 export class CartService {
 
   public mysubject = new Subject();
+  public addquantity = new Subject();
   private id = localStorage.getItem('cartid');
   constructor(private http: HttpClient) { }
 
