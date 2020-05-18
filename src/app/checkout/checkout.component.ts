@@ -22,13 +22,10 @@ export class CheckoutComponent implements OnInit {
     @Inject('BaseURL')public BaseURL) { }
 
   ngOnInit(): void {
-    this.checkoutService.fetchSession()
-      .subscribe( response => {
-        this.sessionId = response['id'];
-      })
+
 
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      address: ['', Validators.required]
     });
 
     this.secondFormGroup = this._formBuilder.group({
@@ -36,6 +33,12 @@ export class CheckoutComponent implements OnInit {
     });
   }
   
+  fetchSession() {
+    this.checkoutService.fetchSession()
+    .subscribe( response => {
+      this.sessionId = response['id'];
+    });
+  }
 
   pay() {
     const stripe = Stripe('pk_test_q0DdrQ8ujFSByhHwyhYmkqQ700esdMVMWI');

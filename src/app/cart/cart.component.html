@@ -5,17 +5,17 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>{{cartitem.name}}</mat-card-title>
-                <mat-card-subtitle>Base Price: ${{cartitem.baseprice}}</mat-card-subtitle>
+                <mat-card-subtitle>Base Price: ₹{{cartitem.baseprice}}</mat-card-subtitle>
                 <mat-card-subtitle>
                     <mat-list>
                         
                         <mat-list-item matLine *ngFor="let topping of cartitem.topping">
-                            <p matLine>{{topping.name}} : + ${{topping.rate}}</p>
+                            <p matLine>{{topping.name}} : + ₹{{topping.rate}}</p>
                         </mat-list-item>
                     </mat-list>
                     <p matLine> Quantity: <button (click)="decrementQuantity(cartitem.id)" mat-mini-fab color="primary"><i class="fa fa-minus-circle"></i></button><b> {{cartitem.quantity}} </b><button (click)="incrementQuantity(cartitem.id)" mat-mini-fab color="primary"><i class="fa fa-plus-circle"></i></button></p>
-                    <p matLine>Extra Price: ${{cartitem.extraprice}}</p>
-                    <p matLine>Total : ${{cartitem.total}}</p>
+                    <p matLine>Extra Price: ₹{{cartitem.extraprice}}</p>
+                    <p matLine>Total : ₹{{cartitem.total}}</p>
                     
                 </mat-card-subtitle>
             </mat-card-header>
@@ -25,7 +25,7 @@
     </div>
 
     <div [hidden]="cart.grand_total == 0">
-        <h2>Subtotal: ${{cart.grand_total}}</h2>
+        <h2>Subtotal: ₹{{cart.grand_total}}</h2>
         <button mat-button class="background-primary text-floral-white" routerLink="/checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i> CheckOut</button>
     </div>
 

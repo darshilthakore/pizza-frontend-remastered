@@ -67,10 +67,10 @@ export class MenuitemComponent implements OnInit {
     console.log("selected size price:", this.selected);
     let newCartItem = new CartItem();
     newCartItem.name = this.item.name;
-    newCartItem.baseprice = this.chosenSizePrice;
-    newCartItem.extraprice = this.chosenToppingPrice;
+    newCartItem.baseprice = Math.round(this.chosenSizePrice);
+    newCartItem.extraprice = Math.round(this.chosenToppingPrice);
     newCartItem.toppings = this.selectedToppings;
-    newCartItem.total = newCartItem.baseprice + newCartItem.extraprice;
+    newCartItem.total = Math.round(newCartItem.baseprice + newCartItem.extraprice);
     // this.cartitems.push(newCartItem);
 
     this.cartService.addToCart(newCartItem)
