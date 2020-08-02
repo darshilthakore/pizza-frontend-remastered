@@ -23,7 +23,7 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Payment</ng-template>
-            <button (click)="pay()">Pay</button>
+            <button mat-button color="primary" (click)="pay()">Pay</button>
         </form>
     </mat-step>
 

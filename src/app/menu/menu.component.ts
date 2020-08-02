@@ -7,6 +7,13 @@ import { Category } from '../shared/category';
 import { Topping } from '../shared/topping';
 import { CartService } from '../services/cart.service';
 import { Cart } from '../shared/cart';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from "@angular/material/dialog";
+import { CartComponent } from '../cart/cart.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-menu',
@@ -23,6 +30,7 @@ export class MenuComponent implements OnInit {
   
   constructor(
     private router: Router,
+    public dialog: MatDialog,
     private menuService: MenuService,
     private cartService: CartService,
     @Inject('BaseURL')public BaseURL) { }
@@ -83,7 +91,12 @@ export class MenuComponent implements OnInit {
     }
     })
   }
-
+  
+  openDialog() {
+    this.dialog.open(CartComponent, {
+      width: "250px",
+    });
+  }
   // updatePrice(args) {
   //   console.log("inside updatePrice");
   //   console.log(args);

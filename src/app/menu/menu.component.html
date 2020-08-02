@@ -1,19 +1,45 @@
 <mat-toolbar color="primary" position="fixed"> <span>Pinochhio's Pizza</span>
     <span class="flex-spacer"></span>
+
     <button mat-raised-button (click)="logoutClicked()" id="logoutBtn" color="primary">LogOut</button>
 </mat-toolbar>
-<div class="cart" color="primary">
+<div class="cart" color="primary" fxHide.xs>
     <app-cart [cart]="cart"></app-cart>
 </div>
 
+<div fxHide fxHide.xs="false">
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Menu">
+            <div class="container"
+                fxLayout="column"
+                fxLayoutGap="10px">
+                <div fxFlex *ngFor="let category of categories">
+                    <h3>{{category.name}}</h3>
+                        <div *ngFor="let item of items" fxLayout="column" fxLayoutGap="20px" fxLayout.xs="column">
+                            <app-menuitem [item]="item" [category]="category" [toppings]="toppings"></app-menuitem>
+                        </div>
+                    <div [hidden]="items">
+                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+                </div>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Cart">
+            <app-cart [cart]="cart"></app-cart>
+        </mat-tab>
+    </mat-tab-group>
+    <!-- <button mat-button color="accent" (click)="openDialog()"><i class="fa fa-shopping-cart" style="size: 9ex; align-content: center;" aria-hidden="true"></i></button> -->
+</div>
 <div class="container"
     fxLayout="column"
-    fxLayoutGap="10px">
+    fxLayoutGap="10px"
+    fxHide.xs="true">
     <div fxFlex *ngFor="let category of categories">
         <h3>{{category.name}}</h3>
-        <div *ngFor="let item of items">
-            <app-menuitem [item]="item" [category]="category" [toppings]="toppings"></app-menuitem>
-        </div>
+            <div *ngFor="let item of items" fxLayout="column" fxLayoutGap="20px" fxLayout.xs="column">
+                <app-menuitem [item]="item" [category]="category" [toppings]="toppings"></app-menuitem>
+            </div>
         <div [hidden]="items">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>

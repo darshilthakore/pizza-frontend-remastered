@@ -1,7 +1,7 @@
 <mat-toolbar color="primary"> <span>Pinochhio's Pizza</span>
     <span class="flex-spacer"></span>
 </mat-toolbar>
-<mat-grid-list cols="2">
+<!-- <mat-grid-list cols="2">
     <mat-grid-tile>
         <app-login></app-login>
     </mat-grid-tile>
@@ -9,4 +9,14 @@
         <app-registration></app-registration>
     </mat-grid-tile>
 
-</mat-grid-list>
+</mat-grid-list> -->
+<div fxLayout="row"
+    fxLayoutAlign="space-evenly center"
+    fxLayout.xs="column">
+    <div fxFlex>
+        <app-login></app-login>
+    </div>
+    <div fxFlex>
+        <app-registration></app-registration>
+    </div>
+</div>

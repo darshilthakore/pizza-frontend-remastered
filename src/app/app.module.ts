@@ -18,7 +18,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatSidenavModule} from '@angular/material/sidenav'; 
-import {MatStepperModule} from '@angular/material/stepper'; 
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatDialogModule } from "@angular/material/dialog";
+import {MatTabsModule} from '@angular/material/tabs'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -71,7 +73,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
     MatProgressBarModule,
     MatExpansionModule,
     MatSidenavModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDialogModule,
+    MatTabsModule,
+  ],
+  entryComponents: [
+    CartComponent
   ],
   providers: [
     RegistrationService,
